@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>ENTRADAS</title>
+</head>
+<body>
+
+  <div class="container">
+  <br>
+  <div class="row">
+
+    <div class="col-md-4">
+      <h3>COMPRAR ENTRADAS</h3>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Cantidad de entradas</label>
+          <input type="text" class="form-control" id="cantidad_entradas" autofocus="autofocus">
+          <small id="emailHelp" class="form-text text-muted">Cada entrada tiene un costo de 100 WEI</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">DNI</label>
+          <input type="text" class="form-control" id="dni">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">WEI a enviar</label>
+          <input type="text" class="form-control" id="wei">
+        </div>      
+        <button type="button" class="btn btn-primary" onclick="comprarEntrada();">Comprar</button>
+      </form>
+    </div>
+
+    <div class="col-md-4">
+      
+    </div>
+
+    <div class="col-md-4">
+      <h3>VER INFO ENTRADA</h3>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">ID Entrada</label>
+          <input type="text" class="form-control" id="id_entrada" >
+          <small id="emailHelp" class="form-text text-muted">Número único asignado</small>
+        </div>
+           
+        <button type="button" class="btn btn-primary" onclick="verEntrada();">Verificar</button>
+        <br>
+        <br>
+        <br>
+        <div id="info_entrada">
+          
+        </div>
+      </form>
+    </div>
+    </div>
+
+    <hr>
+    <br>
+
+
+    <h3>ADMINISTRACION</h3>
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-3 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Nombre del Evento</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title" id="nombre_evento"></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li ></li>
+          </ul>          
+        </div>
+      </div>
+      <div class="card mb-3 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Entradas Disponibles</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title" id="entradas_disponibles"></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li id="entradas_disponibles"></li>
+          </ul>
+         
+        </div>
+      </div>
+      <div class="card mb-3 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Dueño del evento</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title" id="creador_evento"></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li ></li>
+          </ul>
+         
+        </div>
+      </div>
+      <div class="card mb-3 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Valor de la Entrada</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title" id="valor_entradas">$29 <small class="text-muted">/ mo</small></h1>          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
