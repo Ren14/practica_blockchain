@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+    <title>Time Stamp UM</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/style.css">
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h1>Sello de Tiempo</h1>                    
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4" style="padding-top: 15px">
+                    <img src="lib/images/um.png" width="200px">
+                </div>
+            </div>
+            <p>El servicio de Sello de Tiempo de <b>Última Milla SA</b> permite demostrar digitalmente que el contenido de cualquier documento existió en un momento y que desde entonces, no ha cambiado.</p>
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li role="presentation" class="active"><a href="#tab_1" aria-controls="tab_1" role="tab"
+                    data-toggle="tab">1. Sellar</a></li>
+                    <li role="presentation"><a href="#tab_2" aria-controls="tab_2" role="tab" data-toggle="tab">2. Obtener recibo</a></li>
+                    <li role="presentation"><a href="#tab_3" aria-controls="tab_3" role="tab" data-toggle="tab">Verificar</a></li>
+                </ul>
+                <form class="box tab-content" method="post" action="" enctype="multipart/form-data">
+                    <div role="tabpanel" class="tab-pane active" id="tab_1">
+                        <h2>Paso 1: Iniciar sellado</h2>
+                        <p>Seleccioná un archivo para generar un Sello de Tiempo. El servicio generará un <i>hash</i> (un
+                            código criptográfico asociado a dicho documento) y lo enviará a la blockchain. A continuación,
+                            se descargará automáticamente un recibo digital <b>temporario</b> (.rd.temp) que luego podrás
+                            usar para obtener el recibo digital <b>definitivo</b> (.rd) en la pestaña <i>Obtener recibo</i>.</p>
+                            <p>Importante: El documento seleccionado nunca se sube a la red, garantizando su privacidad.</p>
+                            <div id="selectOriginalArea_1" class="dropArea" ondrop="dropStamp(event)" ondragover="allowDrop(event)">
+                                <div id="originalInfo_1" class="replacedTxt">
+                                    <div><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></div>
+                                    <div class="droptxt">Arrastrá un archivo aquí<br>ó</div>
+                                </div>
+                                <div id="ots_temporal"></div>
+                                <div><button type="button" id="selectOriginal_1" class="btn btn-primary btn-pill">Seleccioná un archivo <span class="sr-only">para Sellar</span></button></div>
+                            </div>
+                            <input type="file" id="fileUploadOriginal_1" hidden/>                            
+                            <div id="response_1" role="alert" ></div>
+                        </div>                
+                        <div role="tabpanel" class="tab-pane certificadoTab" id="tab_2">
+                            <h2>Paso 2: Obtener recibo digital definitivo</h2>
+                            <p>Para obtener el recibo definitivo (.rd) de un Sello de Tiempo se debe tener el documento original y el recibo digital temporario (.rd.temp). Al seleccionar ambos archivos, el recibo se descargará automáticamente y podrás visualizar en este sitio el día y la hora en que el hash del documento original fue sellado en la Blockchain Federal Argentina.</p>
+                            <input type="hidden" name="hidden_original_file_hash_2" id="hidden_original_file_hash_2" />
+                            <input type="hidden" name="hidden_original_file_name_2" id="hidden_original_file_name_2" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Seleccioná el archivo original</h3>
+                                    <div id="selectOriginalArea_2" class="dropArea" ondrop="dropOriginalFile(event)"
+                                    ondragover="allowDrop(event)">                                
+                                    <div id="originalInfo_2" class="replacedTxt">
+                                        <div><span class=" glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></div>
+                                        <div class="droptxt">Arrastrá el archivo <b>original</b> aquí<br>ó</div>
+                                    </div>                                
+                                    <div><button type="button" id="selectOriginal_2" class="btn btn-primary btn-pill">Seleccioná un archivo <span class="sr-only">original</span></button></div>
+                                </div>
+                                <input type="file" id="fileUploadOriginal_2" hidden/>
+                            </div>                        
+                            <div class="col-md-6">
+                                <h3>Seleccioná el recibo digital temporario</h3>
+                                <div id="selectReciboArea_2" class="dropArea" ondrop="dropOTSFile(event)" ondragover="allowDrop(event)">
+                                    <div class="replacedTxt">
+                                        <div id="reciboInfo_2"></div>
+                                        <div id="reciboInstructions_2">
+                                            <div><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></div>
+                                            <div class="droptxt">Arrastrá el archivo <b>.rd.temp</b> aquí<br>ó</div>
+                                        </div>
+                                    </div>
+                                    <div><button type="button" id="selectRecibo_2" class="btn btn-primary btn-pill">Seleccioná un archivo <span class="sr-only">.rd.temp</span></button></div>
+                                </div>
+                                <input type="file" id="fileUploadRecibo_2" hidden/>
+                            </div>
+                        </div>
+                        <div id="response_2" role="alert"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane verificarTab" id="tab_3">
+                        <h2>Verificar un sello de tiempo</h2>
+                        <p>Para verificar un Sello de Tiempo se debe tener el documento original y el recibo digital definitivo (.rd). Podrá verificar el día y la hora en que el hash del documento original fue sellado en la Blockchain Federal Argentina.</p>
+                        <input type="hidden" name="hidden_original_file_hash_3" id="hidden_original_file_hash_3" />
+                        <input type="hidden" name="hidden_original_file_name_3" id="hidden_original_file_name_3" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Seleccioná el archivo original</h3>
+                                <div id="selectOriginalArea_3" class="dropArea dropAreaVerify" ondrop="dropOriginalFile(event)"
+                                ondragover="allowDrop(event)">
+                                <div id="originalInfo_3" class="replacedTxt">
+                                    <div><span class=" glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></div>
+                                    <div class="droptxt">Arrastrá el archivo <b>original</b> aquí<br>ó</div>
+                                </div>
+                                <div><button type="button" id="selectOriginal_3" class="btn btn-success btn-pill">Seleccioná un archivo <span class="sr-only">original</span></button></div>
+                            </div>
+                            <input type="file" id="fileUploadOriginal_3" hidden/>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Seleccioná el recibo digital definitivo</h3>
+                            <div id="selectReciboArea_3" class="dropArea dropAreaVerify" ondrop="dropOTSFile(event)" ondragover="allowDrop(event)">
+                                <div class="replacedTxt">
+                                    <div id="reciboInfo_3"></div>
+                                    <div id="reciboInstructions_3">
+                                        <div><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></div>
+                                        <div class="droptxt">Arrastrá el archivo <b>.rd</b> aquí<br>ó</div>
+                                    </div>
+                                </div>
+                                <div><button type="button" id="selectRecibo_3" class="btn btn-success btn-pill">Seleccioná un archivo <span class="sr-only">.rd</span></button></div>
+                            </div>
+                            <input type="file" id="fileUploadRecibo_3" hidden/>
+                        </div>
+                    </div>
+                    <div id="response_3" role="alert"></div>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+<script src="lib/js/bower_components/js-sha256/src/sha256.js"></script>
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/js/index.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+</html>
