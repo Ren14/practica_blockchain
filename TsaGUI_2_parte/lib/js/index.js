@@ -254,45 +254,53 @@ function stamp(_file_hash, _ots, _file_name){
     console.log("Ots_Hash: " + _ots);
     console.log("File_Hash: " + _file_hash);
 
-    funciones.stamp(_ots, _file_hash, function(error, respuesta){
+    try{
+        funciones.stamp(_ots, _file_hash, function(error, respuesta){
 
-        if(error){
-            throw error;
-        } else {
-            
-            console.log(respuesta);    
+            if(error){
+                throw error;
+            } else {
+                
+                console.log(respuesta);    
 
-            var ots = ' {"file_hash": "' + _file_hash + '", "rd": "' + _ots + '"}';
-            
-            
-            var saveData = (function () {
-                var a = document.createElement("a");
-                document.body.appendChild(a);
-                a.style = "display: none";
-                return function (data, fileName) {
-                    var json = JSON.stringify(data),
-                        blob = new Blob([json], {
-                            type: "octet/stream"
-                        }),
-                        url = window.URL.createObjectURL(blob);
-                    a.href = url;
-                    a.download = fileName;
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                };
-            }());
+                var ots = ' {"file_hash": "' + _file_hash + '", "rd": "' + _ots + '"}';
+                
+                
+                var saveData = (function () {
+                    var a = document.createElement("a");
+                    document.body.appendChild(a);
+                    a.style = "display: none";
+                    return function (data, fileName) {
+                        var json = JSON.stringify(data),
+                            blob = new Blob([json], {
+                                type: "octet/stream"
+                            }),
+                            url = window.URL.createObjectURL(blob);
+                        a.href = url;
+                        a.download = fileName;
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                    };
+                }());
 
-            var data = _ots;
-            
-            
-            fileName = _file_name + ".rd.temp";
+                var data = _ots;
+                
+                
+                fileName = _file_name + ".rd.temp";
 
-            saveData(data, fileName); // permite guardar el archivo mediante un cuadro de diálogo
+                saveData(data, fileName); // permite guardar el archivo mediante un cuadro de diálogo
+            
+            }
+
+        });
+    } catch(err) {
         
-        }
-
-    });
-   
+        Swal.fire(
+          'Atención !',
+          'Debe iniciar sesion en Metamask para aprobar la transaccion enviada al SmartContract.',
+          'error'
+        )
+    }
    
 }
 

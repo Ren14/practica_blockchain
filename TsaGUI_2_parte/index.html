@@ -32,11 +32,10 @@
                 <form class="box tab-content" method="post" action="" enctype="multipart/form-data">
                     <div role="tabpanel" class="tab-pane active" id="tab_1">
                         <h2>Paso 1: Iniciar sellado</h2>
-                        <p>Seleccioná un archivo para generar un Sello de Tiempo. El servicio generará un <i>hash</i> (un
-                            código criptográfico asociado a dicho documento) y lo enviará a la blockchain. A continuación,
-                            se descargará automáticamente un recibo digital <b>temporario</b> (.rd.temp) que luego podrás
-                            usar para obtener el recibo digital <b>definitivo</b> (.rd) en la pestaña <i>Obtener recibo</i>.</p>
-                            <p>Importante: El documento seleccionado nunca se sube a la red, garantizando su privacidad.</p>
+                        <p>El servicio generará un <i>hash</i> (un
+                            código criptográfico asociado al documento cargado) y lo enviará a la blockchain. A continuación,
+                            se descargará automáticamente un recibo digital <b>temporario</b> (.rd.temp).</p>
+                            <p><b>Importante:</b> El documento seleccionado nunca se sube a la red, garantizando su privacidad.</p>
                             <div id="selectOriginalArea_1" class="dropArea" ondrop="dropStamp(event)" ondragover="allowDrop(event)">
                                 <div id="originalInfo_1" class="replacedTxt">
                                     <div><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></div>
@@ -50,7 +49,7 @@
                         </div>                
                         <div role="tabpanel" class="tab-pane certificadoTab" id="tab_2">
                             <h2>Paso 2: Obtener recibo digital definitivo</h2>
-                            <p>Para obtener el recibo definitivo (.rd) de un Sello de Tiempo se debe tener el documento original y el recibo digital temporario (.rd.temp). Al seleccionar ambos archivos, el recibo se descargará automáticamente y podrás visualizar en este sitio el día y la hora en que el hash del documento original fue sellado en la Blockchain Federal Argentina.</p>
+                            <p>Para obtener el recibo digital <b>definitivo</b> (.rd) de un Sello de Tiempo, se debe subir el documento original y el recibo digital temporario (.rd.temp). Al seleccionar ambos archivos, el recibo digital definitivo se descargará automáticamente.</p>
                             <input type="hidden" name="hidden_original_file_hash_2" id="hidden_original_file_hash_2" />
                             <input type="hidden" name="hidden_original_file_name_2" id="hidden_original_file_name_2" />
                             <div class="row">
@@ -126,4 +125,5 @@
 <script src="lib/js/jquery.min.js"></script>
 <script src="lib/js/index.js"></script>
 <script src="lib/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </html>
