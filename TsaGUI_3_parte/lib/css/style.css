@@ -1,0 +1,300 @@
+/*
+Copyright 2019 de la Dirección General de Sistemas Informáticos – Secretaría Legal y Técnica - Nación.
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/
+*/
+html {
+    font-size: 0.9em;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.125em;
+    background-color: #ffffff;
+    line-height: 1.45;
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 1.414em 0 0.5em;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 2.441em;
+}
+
+h2 {
+    font-size: 1.953em;
+}
+
+h3 {
+    font-size: 1.563em;
+    margin-top: 10px;
+}
+
+h4 {
+    font-size: 1.25em;
+}
+
+small,
+.font_small {
+    font-size: 0.8em;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.btn-pill {
+    border-radius: 50px;
+}
+
+.navbar-default {
+    background-color: #ffffff;
+    border-color: #e7e7e7;
+}
+
+.navbar-brand {
+    height: 130px;
+}
+
+.dropArea {
+    border: 1px dashed #0094D4;
+    background-color: #ffffff;
+    padding: 50px;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.hash {
+    word-wrap: break-word;
+}
+
+.replacedTxt {
+    margin-bottom: 20px;
+}
+
+.dropArea p {
+    margin-bottom: 5px;
+}
+
+.dropAreaVerify {
+    border: 1px dashed #4cae4c;
+}
+
+.dropArea:hover {
+    background-color: #f0f7ff;
+    border-style: solid;
+}
+
+.dropAreaVerify:hover {
+    background-color: #e5fce5;
+    border-style: solid;
+}
+
+.dropArea .droptxt {
+    font-size: 1.2em;
+    margin-bottom: -5px;
+}
+
+.dropArea .glyphicon-cloud-upload {
+    font-size: 8em;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    .dropArea .glyphicon-cloud-upload {
+        font-size: 4em;
+        margin-bottom: 20px;
+    }
+
+    .dropArea {
+        padding: 20px;
+    }
+}
+
+.loading {
+    background-color: #0094D4;
+    margin-top: 5px;
+    display: none;
+    padding: 10px;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+[hidden]{
+    display: none !important;
+}
+
+.btn-lg {
+    min-width: 200px;
+}
+
+.tab-pane {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-top: 0px;
+    padding: 40px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    background-color: #f8f8f8;
+}
+@media screen and (min-width: 768px) {
+    .nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:focus, .nav-tabs.nav-justified>.active>a:hover{
+        border-bottom-color: #f8f8f8;
+    }
+}
+.tab-pane h2 {
+    margin-top: 0px;
+}
+.nav-tabs {
+    font-size: 1.953em;
+}
+
+.alert   {
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .tab-pane {
+        border-top: 1px solid #ddd;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    h3 {
+        margin-top: 30px;
+    }
+
+    .nav-tabs {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .dropArea .droptxt {
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+}
+
+
+.navbar-header .logo img {
+    height: 100px;
+    width: 140px;
+}
+.navbar .logo {
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media screen and (min-width: 768px){
+    .navbar .logo {
+        margin-right: 0;
+        padding-left: 0;
+    }
+}
+
+.navbar-default {
+    background-color: #fff;
+    border-color: #e7e7e7;
+    padding-top: 30px;
+}
+
+.navbar-default .navbar-nav li>a {
+    color: #0094D4;
+    font-weight: 400;
+    font-size: 1.25em;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #2e2f30;
+    background-color: transparent;
+    border-bottom: 2px solid #2e2f30;
+}
+
+@media (min-width: 768px) {
+    .navbar-default .navbar-nav li>a {
+        color: #0094D4;
+        padding-bottom: 8px;
+        padding-left: 4px;
+        padding-right: 4px;
+        margin-left: 20px;
+        border-bottom: 2px solid transparent;
+    }
+
+    .navbar-default .navbar-nav li>a:hover,
+    .navbar-default .navbar-nav li>a:focus {
+        color: #0094D4;
+        border-bottom: 2px solid #0094D4;
+    }
+
+    .navbar-default .navbar-nav li:last-child>a:hover,
+    .navbar-default .navbar-nav li:last-child>a:focus {
+        color: #0094D4;
+        background-color: #fff;
+    }
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #0094D4;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #0094D4;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #0094D4;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar,
+.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .menu {
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+
+    .navbar-default .navbar-nav li>a:hover,
+    .navbar-default .navbar-nav li>a:focus {
+        color: #0094D4;
+        text-decoration: underline;
+    }
+    .navbar-default {
+        padding-top: 0px;
+    }
+
+    .navbar-default .navbar-collapse {
+        -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+    }
+
+    .navbar-default .menu {
+        margin-top: 0;
+    }
+
+}

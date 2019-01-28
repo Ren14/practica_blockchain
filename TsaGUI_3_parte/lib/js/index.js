@@ -1,140 +1,9 @@
 //CONFIGURACIONES PARA CONECTAR AL SMART CONTRACT
-var abi = [
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "ots",
-                "type": "string"
-            },
-            {
-                "name": "file_hash",
-                "type": "string"
-            }
-        ],
-        "name": "stamp",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "name": "hash",
-                "type": "string"
-            },
-            {
-                "indexed": true,
-                "name": "ots",
-                "type": "string"
-            }
-        ],
-        "name": "Stamped",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "name": "from",
-                "type": "address"
-            }
-        ],
-        "name": "Deploy",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "name": "from",
-                "type": "address"
-            }
-        ],
-        "name": "SelfDestroy",
-        "type": "event"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "ots",
-                "type": "string"
-            }
-        ],
-        "name": "getBlockNumber",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "ots",
-                "type": "string"
-            }
-        ],
-        "name": "getHash",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "ots",
-                "type": "string"
-            },
-            {
-                "name": "file_hash",
-                "type": "string"
-            }
-        ],
-        "name": "verify",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }
-];
-var addressContrato = "0xe620088245716b67247d1e637ca1cd8bb797d88a";
-var contrato = web3.eth.contract(abi);
-var funciones = contrato.at(addressContrato);
+web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+abi = JSON.parse('[{"constant":true,"inputs":[{"name":"ots","type":"string"}],"name":"getHash","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"ots","type":"string"}],"name":"getBlockNumber","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"ots","type":"string"},{"name":"file_hash","type":"string"}],"name":"verify","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"ots","type":"string"},{"name":"file_hash","type":"string"}],"name":"stamp","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"hash","type":"string"},{"indexed":true,"name":"ots","type":"string"}],"name":"Stamped","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"}],"name":"Deploy","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"}],"name":"SelfDestroy","type":"event"}]')
+stamperContract = web3.eth.contract(abi);
+// In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
+var funciones = stamperContract.at('0xbd9c24cbf4aaed2ef6958c9fd2d993a1b6a0f050');
 
 // VARIABLES DEL PROYECTO
 var loader_gif = 'lib/images/loader.svg';
@@ -146,13 +15,6 @@ var currentTab = whash.substring(5, 6);
 
 // FUNCIONES DEL ONLOAD
 $(function () {
-    // CONECTO CON EL SMARTCONTRACT
-    if (typeof web3 !== 'undefined') {
-        web3 = new Web3(web3.currentProvider);
-    } else {
-        web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io"));
-    }
-
     // INICIALIZO LAS PESTAÑAS
     whash && $('ul.nav a[href="' + whash + '"]').tab('show');
     $('.nav-tabs a').click(function (e) {
@@ -250,11 +112,12 @@ function get_ots_final(_ots) {
 Se encarga de comunicarse con el Smart Contract para poder firmar el contrato
 */
 function stamp(_file_hash, _ots, _file_name){
+    console.log("METODO STAMP()");
     console.log("Ots_Hash: " + _ots);
     console.log("File_Hash: " + _file_hash);
 
     try{
-        funciones.stamp(_ots, _file_hash, function(error, respuesta){
+        funciones.stamp(_ots, _file_hash, {from: web3.eth.accounts[0],gas:3000000}, function(error, respuesta){
 
             if(error){
                 throw error;
@@ -293,6 +156,7 @@ function stamp(_file_hash, _ots, _file_name){
 
         });
     } catch(err) {
+        console.log(err);
         
         Swal.fire(
           'Atención !',
@@ -317,7 +181,7 @@ function verify_bfa(_ots, _file_hash) {
     $('#response_' + currentTab).removeClass();
 
     
-    funciones.verify(_ots, _file_hash, function(error, respuesta){
+    funciones.verify(_ots, _file_hash, {from: web3.eth.accounts[0]}, function(error, respuesta){
          if(error){
             throw error;
         } else {    
@@ -434,4 +298,25 @@ function ots_check(file) {
 
         verify_bfa(file_contents, file_hash);
     };
+}
+
+
+function verify_manual(_ots, _file_hash) {
+    funciones.verify(_ots, _file_hash, {from: web3.eth.accounts[0],gas:3000000}, function(error, respuesta){
+         if(error){
+            throw error;
+        } else {    
+            console.log("verify_manual: " + respuesta);
+        }
+    });
+}
+
+function stamp_manual(_ots, _file_hash) {
+    funciones.stamp(_ots, _file_hash, {from: web3.eth.accounts[0],gas:3000000}, function(error, respuesta){
+         if(error){
+            throw error;
+        } else {    
+            console.log("stamp_manual: " + respuesta);
+        }
+    });
 }
