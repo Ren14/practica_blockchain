@@ -1,7 +1,7 @@
 # TsaGUI + Remix
 
 ### Descripción
-TsaGUI es una interfaz gráfica que permite interactuar con un smart contract (incluido en la carpeta lib/ProofOfExistence.sol) deployado preferentemente en el IDE REMIX.
+TsaGUI https://gitlab.bfa.ar/pkumagae/TsaGUI es una interfaz gráfica que permite interactuar con un smart contract (incluido en la carpeta lib/ProofOfExistence.sol) deployado preferentemente en el IDE REMIX.
 Se recomienda utilizar Metamask para aprobar las transacciones.
     
 ### Utilización
