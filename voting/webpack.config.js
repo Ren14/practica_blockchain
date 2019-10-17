@@ -2,6 +2,9 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+  devServer: {
+     host: '10.10.12.189'
+   },
   entry: './app/javascripts/app.js',
   output: {
     path: path.resolve(__dirname, 'build'),

@@ -168,7 +168,7 @@ var abi = [
 	}
 ];
 
-var addressContrato = "0x4accb00f8d1e182e4ebd31169a5706ed32f905ae";
+var addressContrato = "0x17bc953dd4161A35122e6Ad65bDe00C09C0d99f5";
 var contrato = web3.eth.contract(abi);
 var funcionesContrato = contrato.at(addressContrato);
 
